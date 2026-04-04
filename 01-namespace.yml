@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: namespace
+metadata:
+  name: robodhop
+  labels:
+    project: roboshop
+    environment: dev
