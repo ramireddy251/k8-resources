@@ -6,6 +6,8 @@ metadata:
   labels: 
     project: roboshop
     tier: frontend
+  annotations: 
+    kubernetes.io/change-cause: "moving to 1.29"  
 spec:
   replicas: 3
   selector:
@@ -20,6 +22,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:stable-alpine3.23-perl
+        image: nginx:1.29
 
         
