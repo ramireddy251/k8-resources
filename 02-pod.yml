@@ -3,8 +3,6 @@ kind: Pod
 metadata:
   name: nginx
   namespace: roboshop
-  labels:
-    project: roboshop
 spec:
   containers:
   - name: nginx
