@@ -7,3 +7,4 @@ parameters:
   provisioningMode: efs-ap
   fileSystemId: fs-08b7815ab6f44f841
   directoryPerms: "700"
+  basePath: "/roboshop"
