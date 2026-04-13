@@ -8,3 +8,31 @@ parameters:
   fileSystemId: fs-08b7815ab6f44f841
   directoryPerms: "700"
   basePath: "/roboshop"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-dynamic
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: roboshop-efs
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: efs-app
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: html-data
+          mountPath: /usr/share/nginx/html
+  volumes:
+    - name: html-data
+      persistentVolumeClaim:
+        claimName: efs-dynamic
