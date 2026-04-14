@@ -27,7 +27,7 @@ volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Retain         
 ---
 apiVersion: apps/v1
-kind: statefulSet
+kind: StatefulSet
 metadata:
   name: mongodb
   namespace: roboshop
