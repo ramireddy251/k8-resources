@@ -54,6 +54,13 @@ spec:
       - name: mongodb
         image: 966392474288.dkr.ecr.us-east-1.amazonaws.com/mongodb
         imagePullPolicy: Always
+        resources:
+        requests:
+          cpu: "128m"
+          memory: "256Mi"
+        limits:
+          cpu: "256m"
+          memory: "512Mi"
         volumeMounts:
         - name: mongodb
           mountPath: /data/db
@@ -67,13 +74,6 @@ spec:
       resources:
         requests:
           storage: 1Gi          
-      resources:
-        requests:
-          cpu: "128m"
-          memory: "256Mi"
-        limits:
-          cpu: "256m"
-          memory: "512Mi"
 
 ---
 
