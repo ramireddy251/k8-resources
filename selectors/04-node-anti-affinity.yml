@@ -10,28 +10,27 @@ spec:
         nodeSelectorTerms:
         - matchExpressions:
           - key: topology.kubernetes.io/zone
-            operator: In
+            operator: NotInIn # anti-affinity
             values:
-            - us-east-1c
             - us-east-1d
     # soft rule        
-      preferredDuringSchedulingIgnoredDuringExecution:
-      # Anti affinity
-      - weight: 100
-        preference:
-          matchExpressions:
-          - key: project
-            operator: NotIn
-            values:
-            - roboshop
+      # preferredDuringSchedulingIgnoredDuringExecution:
+      # # Anti affinity
+      # - weight: 100
+      #   preference:
+      #     matchExpressions:
+      #     - key: project
+      #       operator: NotIn
+      #       values:
+      #       - roboshop
 
-      - weight: 10
-        preference:
-          matchExpressions:
-          - key: project
-            operator: In
-            values:
-            - amazon      
+      # - weight: 10
+      #   preference:
+      #     matchExpressions:
+      #     - key: project
+      #       operator: In
+      #       values:
+      #       - amazon      
   containers:
   - name: nginx
     image: nginx
