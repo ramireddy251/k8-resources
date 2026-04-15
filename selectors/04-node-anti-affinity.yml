@@ -6,23 +6,23 @@ spec:
   affinity:
     nodeAffinity:
     # hard rule
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: topology.kubernetes.io/zone
-            operator: NotIn # anti-affinity
-            values:
-            - us-east-1d
-    # soft rule        
-      # preferredDuringSchedulingIgnoredDuringExecution:
-      # # Anti affinity
-      # - weight: 100
-      #   preference:
-      #     matchExpressions:
-      #     - key: project
-      #       operator: NotIn
+      # requiredDuringSchedulingIgnoredDuringExecution:
+      #   nodeSelectorTerms:
+      #   - matchExpressions:
+      #     - key: topology.kubernetes.io/zone
+      #       operator: NotIn # anti-affinity
       #       values:
-      #       - roboshop
+      #       - us-east-1d
+    # soft rule        
+      preferredDuringSchedulingIgnoredDuringExecution:
+      # Anti affinity
+      - weight: 100
+        preference:
+          matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - roboshopp
 
       # - weight: 10
       #   preference:
