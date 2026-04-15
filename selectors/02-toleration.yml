@@ -8,8 +8,10 @@ spec:
     image: nginx
     ports:
     - containerPort: 80
+  nodeSelector:
+    project: roboshop  
   tolerations: 
   - key: "project"
     operator: "Equal"
     value: "roboshop"
-    effect: "NoSchedule"  
+    effect: "NoExecute"  
