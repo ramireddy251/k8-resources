@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-affinity
+  name: nginx-anti-affinity
 spec:
   affinity:
     nodeAffinity:
