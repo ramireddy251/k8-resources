@@ -9,3 +9,27 @@ spec:
   containers:
   - name: nginx
     image: nginx  
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+  labels:
+    tier: beckend
+    
+spec:
+  affinity:
+    podAffinity:
+      # Hard Rule
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: tier
+            operator: In
+            values:
+            - backend
+        topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx  
