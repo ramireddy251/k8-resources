@@ -10,7 +10,7 @@ spec:
         nodeSelectorTerms:
         - matchExpressions:
           - key: topology.kubernetes.io/zone
-            operator: NotInIn # anti-affinity
+            operator: NotIn # anti-affinity
             values:
             - us-east-1d
     # soft rule        
