@@ -20,5 +20,5 @@ rules:
   verbs: ["get", "watch", "list"]
 
 - apiGroups: ["storage.k8s.io"]
-  resources: ["storageclass"]
+  resources: ["storageclasses"]
   verbs: ["get", "watch", "list"]  
