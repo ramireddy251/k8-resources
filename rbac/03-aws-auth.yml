@@ -8,7 +8,7 @@ data:
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
     - groups:
-      - roboshop-trainee
+      - roboshop-admin
       userarn: arn:aws:iam::966392474288:user/Ram
       username: Ram   
 kind: ConfigMap
