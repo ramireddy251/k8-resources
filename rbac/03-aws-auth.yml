@@ -13,7 +13,6 @@ data:
       username: Ram   
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2026-04-13T12:30:08Z"
   name: aws-auth
   namespace: kube-system
-  uid: 177e39cf-722e-4e27-9385-33291b84e435
+  
