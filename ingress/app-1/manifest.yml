@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: app1
-        image: app-1
+        image: docker push 966392474288.dkr.ecr.us-east-1.amazonaws.com/app-1
 ---
 
 apiVersion: v1
