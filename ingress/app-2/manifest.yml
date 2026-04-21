@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2
+  namespace: roboshop
+  labels: 
+    project: roboshop
+    tier: frontend
+    component: app2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: roboshop
+      tier: frontend
+      component: app2
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        tier: frontend
+        component: app2
+    spec:
+      containers:
+      - name: app2
+        image: 966392474288.dkr.ecr.us-east-1.amazonaws.com/app-1:latest
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app2
+  namespace: roboshop
+spec:
+  type: ClusterIP
+  selector: 
+    project: roboshop
+    tier: frontend
+    component: app2
+  ports:
+  - protocol: TCP
+    port: 80 # service port
+    targetPort: 80  # container port
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app2
+  namespace: roboshop
+  annotations:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: 'arn:aws:acm:us-east-1:966392474288:certificate/b9d8db3d-9013-456c-8195-8f4cedd161c1'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/tags: Environment=dev,Project=roboshop
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+  - host: "app2.ramireddy.co.in"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app2
+            port:
+              number: 80
